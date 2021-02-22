@@ -25,3 +25,8 @@ jobs:
           command: npm run test
   heroku_deploy:
     - heroku/deploy-via-git
+workflows:
+  build_and_deploy:
+    jobs:
+      - build
+      - heroku_deploy
