@@ -14,6 +14,6 @@ import Home from "../pages/index";
 it("Renders appropriately", () => {
   render(<Home />);
   expect(
-    screen.getByRole("heading", { name: "Welcome to Focus Feed" })
+    screen.getByRole("heading", { name: "Loading..." })
   ).toBeInTheDocument();
 });
