@@ -1,6 +1,10 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Navigation from "../components/Navigation";
+import { Container, Row, Col } from "reactstrap";
+
+import CreateTimer from "../components/CreateTimer";
+import Feed from "../components/Feed";
+import Leaderboard from "../components/Leaderboard";
 
 import { signIn, signOut, useSession } from "next-auth/client";
 
@@ -17,7 +21,19 @@ export default function Home() {
   if (session) {
     return (
       <div>
-        <Navigation />
+        <Row>
+          <Col xs="12">
+            <CreateTimer />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs="3">
+            <Leaderboard />
+          </Col>
+          <Col xs="9">
+            <Feed />
+          </Col>
+        </Row>
         Hello, {session.user.email ?? session.user.name} <br />
         <button onClick={() => signOut()}>Sign out</button>
       </div>
