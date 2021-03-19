@@ -2,6 +2,7 @@ import { Provider } from "next-auth/client";
 import { AppProps } from "next/app";
 
 import "../styles/globals.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function MyApp({ Component, pageProps }) {
   return (

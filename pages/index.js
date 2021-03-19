@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import Navigation from "../components/Navigation";
 
 import { signIn, signOut, useSession } from "next-auth/client";
 
@@ -16,6 +17,7 @@ export default function Home() {
   if (session) {
     return (
       <div>
+        <Navigation />
         Hello, {session.user.email ?? session.user.name} <br />
         <button onClick={() => signOut()}>Sign out</button>
       </div>
