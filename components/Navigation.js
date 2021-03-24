@@ -41,7 +41,7 @@ const Navigation = (props) => {
         </Collapse>
         {session ? (
           <NavbarText>
-            Hello, {session.user.email ?? session.user.name} <br />
+            Hello, {session.user.name ?? session.user.name} <br />
             <button onClick={() => signOut()}>Sign out</button>
           </NavbarText>
         ) : (

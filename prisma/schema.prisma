@@ -47,17 +47,18 @@ model User {
   image         String?
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @default(now()) @map(name: "updated_at")
-
+  timers        Timer[]
+  
   @@map(name: "users")
 }
 
-model VerificationRequest {
-  id         Int      @default(autoincrement()) @id
-  identifier String
-  token      String   @unique
-  expires    DateTime
-  createdAt  DateTime  @default(now()) @map(name: "created_at")
-  updatedAt  DateTime  @default(now()) @map(name: "updated_at")
+model Timer {
+  id        Int      @id @default(autoincrement())
+  body      String
+  userId    Int
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  author    User     @relation(fields: [userId], references: [id])
 
-  @@map(name: "verification_requests")
+  @@map("timers")
 }
