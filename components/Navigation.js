@@ -14,8 +14,11 @@ import {
   NavbarText,
 } from "reactstrap";
 
+import { signIn, signOut, useSession } from "next-auth/client";
+
 const Navigation = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [session, loading] = useSession();
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -27,27 +30,23 @@ const Navigation = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink href="/components/">View Profile</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="https://github.com/reactstrap/reactstrap">
-                GitHub
+                Settings
               </NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Options
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>Option 1</DropdownItem>
-                <DropdownItem>Option 2</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Reset</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
         </Collapse>
+        {session ? (
+          <NavbarText>
+            Hello, {session.user.email ?? session.user.name} <br />
+            <button onClick={() => signOut()}>Sign out</button>
+          </NavbarText>
+        ) : (
+          <NavbarText>Signed out.</NavbarText>
+        )}
       </Navbar>
     </div>
   );

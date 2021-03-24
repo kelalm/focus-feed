@@ -34,8 +34,6 @@ export default function Home() {
             <Feed />
           </Col>
         </Row>
-        Hello, {session.user.email ?? session.user.name} <br />
-        <button onClick={() => signOut()}>Sign out</button>
       </div>
     );
   } else {
