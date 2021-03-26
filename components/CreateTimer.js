@@ -4,7 +4,24 @@ import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 const CreateTimer = (props) => {
   return (
     <div>
-      <Form>
+      <Form
+        onSubmit={async (e) => {
+          e.preventDefault();
+
+          // // we include "false" here to ask SWR not to revalidate the cache with
+          // // the feed returned from the server. we'll remove this after the next section
+          // mutate(
+          //   "/api/feed",
+          //   [
+          //     { text: input, author: { username: "Temp Temp" } },
+          //     ...feed,
+          //   ],
+          //   false
+          // );
+
+          // setInput("");
+        }}
+      >
         <FormGroup>
           <h2>Welcome to Focus Feed</h2>
           <p>
