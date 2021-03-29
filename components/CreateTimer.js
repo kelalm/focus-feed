@@ -34,6 +34,16 @@ const CreateTimer = (props) => {
           {/* <Label for="exampleText">Text Area</Label> */}
           <Input type="textarea" name="text" id="exampleText" />
         </FormGroup>
+        <FormGroup>
+          <Label for="exampleSelect">Duration</Label>
+          <Input type="select" name="select" id="exampleSelect">
+            <option>1 minute</option>
+            <option>2 minutes</option>
+            <option>3 minutes</option>
+            <option>4 minutes</option>
+            <option>5 minutes</option>
+          </Input>
+        </FormGroup>
         <Button>Submit</Button>
       </Form>
     </div>
